@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Flames Bite</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <img src="Name_and_address_view_copy-removebg-preview.png" alt="Flames Logo" class="site-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="cart-nav">
+                <button id="cart-btn" aria-label="View cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+            </div>
+            <button id="theme-switcher" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-section" style="padding: 7rem 1rem 3rem 1rem; max-width: 600px; margin: 0 auto; text-align: center;">
+            <img src="/logo.png" alt="Flames Logo" style="max-width: 220px; margin-bottom: 1.5rem;" onerror="this.style.display='none'">
+            <h1 style="color: #e6b800; font-size: 2.2rem; margin-bottom: 0.5rem;">FLAMES</h1>
+            <div style="color: #e6b800; font-weight: 600; margin-bottom: 1.5rem;">FLAMES OF FLAVOR, PEAKS OF PERFECTION<br><span style="color:#fff; background:#e6b800; border-radius:4px; padding:0 0.3em; font-size:1rem;">BY PINNACLE</span></div>
+            <div style="margin-bottom: 1.5rem;">
+                <div style="font-size: 1.2rem; margin-bottom: 0.7rem; color: #fff;">
+                    <i class="fab fa-whatsapp" style="color:#25d366;"></i>
+                    <span style="margin-left: 0.5em; color: #e6b800; font-weight: bold;">0321-8750886</span>
+                </div>
+                <div style="font-size: 1.1rem; margin-bottom: 0.7rem; color: #fff;">
+                    <i class="fas fa-map-marker-alt" style="color:#e63946;"></i>
+                    <span style="margin-left: 0.5em; color: #e6b800;">Main Food Street, Creek Walk<br>Phase - 8, DHA Karachi.</span>
+                </div>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <a href="https://facebook.com/pinnacle.event" target="_blank" style="color:#fff; text-decoration:none; margin:0 1em; font-size:1.3rem;">
+                    <i class="fab fa-facebook"></i> <span style="color: #e6b800;">/pinnacle.event</span>
+                </a>
+                <a href="https://instagram.com/pinnacle.event" target="_blank" style="color:#fff; text-decoration:none; margin:0 1em; font-size:1.3rem;">
+                    <i class="fab fa-instagram"></i> <span style="color: #e6b800;">/pinnacle.event</span>
+                </a>
+            </div>
+            <div style="margin:2rem 0;">
+                <iframe src="https://www.google.com/maps?q=DHA+Phase+8,+Karachi,+Pakistan&output=embed" width="100%" height="300" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@flamesbite.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Flames Bite. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span id="close-cart" class="close-cart">&times;</span>
+            <h3>Your Cart</h3>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <strong>Total: </strong><span id="cart-total">Rs. 0</span>
+            </div>
+        </div>
+    </div>
+    <!-- Floating Cart Button (FAB) -->
+    <button id="fab-cart-btn" aria-label="View cart" class="fab-cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="fab-cart-count">0</span>
+    </button>
+</body>
+</html> 

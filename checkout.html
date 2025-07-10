@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Flames</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <img src="Name_and_address_view_copy-removebg-preview.png" alt="Flames Logo" class="site-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button id="theme-switcher" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        </nav>
+    </header>
+    <main>
+        <section class="checkout-section" style="max-width: 500px; margin: 7rem auto 2rem auto; background: var(--color-card); border-radius: 12px; box-shadow: 0 2px 12px var(--color-feature-shadow); padding: 2rem;">
+            <h2 class="big-heading" style="font-size:2.2rem;">Order Summary</h2>
+            <div id="checkout-cart-summary"></div>
+            <form id="checkout-form" style="margin-top:2rem;display:flex;flex-direction:column;gap:1.2em;">
+                <input type="text" id="checkout-name" placeholder="Your Name" required style="padding:0.8em;font-size:1.1em;border-radius:6px;border:1px solid var(--color-border);">
+                <input type="tel" id="checkout-phone" placeholder="Phone Number" required style="padding:0.8em;font-size:1.1em;border-radius:6px;border:1px solid var(--color-border);">
+                <textarea id="checkout-address" placeholder="Delivery Address" required style="padding:0.8em;font-size:1.1em;border-radius:6px;border:1px solid var(--color-border);"></textarea>
+                <button type="submit" class="cta-button" style="font-size:1.2em;">Place Order</button>
+            </form>
+            <div id="checkout-thankyou" style="display:none;margin-top:2em;text-align:center;font-size:1.3em;color:var(--color-primary);font-weight:bold;">
+                Thank you for your order! We will contact you soon.<br>
+                
+                <a href="index.html" class="cta-button" style="margin-top:1.5em;display:inline-block;font-size:1em;">Back to Home Page</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@flames.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Flames. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span id="close-cart" class="close-cart">&times;</span>
+            <h3>Your Cart</h3>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <strong>Total: </strong><span id="cart-total">Rs. 0</span>
+            </div>
+        </div>
+    </div>
+    <!-- Floating Cart Button (FAB) -->
+    <button id="fab-cart-btn" aria-label="View cart" class="fab-cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="fab-cart-count">0</span>
+    </button>
+    <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html> 
