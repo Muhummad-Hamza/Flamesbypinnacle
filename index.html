@@ -95,16 +95,22 @@
 
     <script src="js/main.js"></script>
 
-    <script type="text/javascript">
-        (function(d, m){
-            var kommunicateSettings = 
-                {"appId":"14e138416a7b6bd5ec5090dfef3fc6244","popupWidget":true,"automaticChatOpenOnNavigation":true};
-            var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-            var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-            window.kommunicate = m; m._globals = kommunicateSettings;
-        })(document, window.kommunicate || {});
-    /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
-    </script>
+    <!-- Chatbot widget -->
+    <div id="chatbot-widget" class="chatbot-widget" aria-live="polite">
+        <div class="chatbot-header">
+            <div>
+                <span class="chatbot-title">Flames Help</span>
+                <span class="chatbot-subtitle">Ask about menu, orders, hours</span>
+            </div>
+            <button id="chatbot-close" aria-label="Close chat"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div id="chatbot-quick-replies" class="chatbot-quick-replies"></div>
+        <form id="chatbot-form" class="chatbot-form" aria-label="Chat with support">
+            <input id="chatbot-input" type="text" placeholder="Type your question..." autocomplete="off">
+            <button type="submit" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chat"><i class="fas fa-comments"></i></button>
 </body>
 </html>

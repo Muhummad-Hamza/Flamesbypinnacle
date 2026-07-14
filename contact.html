@@ -97,5 +97,23 @@
         <i class="fas fa-shopping-cart"></i>
         <span id="fab-cart-count">0</span>
     </button>
+
+    <!-- Chatbot widget -->
+    <div id="chatbot-widget" class="chatbot-widget" aria-live="polite">
+        <div class="chatbot-header">
+            <div>
+                <span class="chatbot-title">Flames Help</span>
+                <span class="chatbot-subtitle">Ask about menu, orders, hours</span>
+            </div>
+            <button id="chatbot-close" aria-label="Close chat"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div id="chatbot-quick-replies" class="chatbot-quick-replies"></div>
+        <form id="chatbot-form" class="chatbot-form" aria-label="Chat with support">
+            <input id="chatbot-input" type="text" placeholder="Type your question..." autocomplete="off">
+            <button type="submit" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chat"><i class="fas fa-comments"></i></button>
 </body>
 </html> 

@@ -8,6 +8,136 @@ if (mobileMenuBtn) {
   });
 }
 
+const chatbotRules = [
+  {
+    keywords: ['time', 'hours', 'open', 'close'],
+    answer: 'We are open every day from 11AM to 11PM. Order or visit us anytime during those hours!'
+  },
+  {
+    keywords: ['delivery', 'deliver', 'shipping'],
+    answer: 'Yes! We offer delivery in the local area. Place your order from the menu and we will handle the rest.'
+  },
+  {
+    keywords: ['order', 'ordering', 'place order', 'how to order'],
+    answer: 'To order, browse our menu, add items to your cart, and proceed to checkout. If you need help, just ask me!'
+  },
+  {
+    keywords: ['location', 'address', 'where', 'located'],
+    answer: 'We are located on Main Food Street, Creek Walk, Phase 8, DHA Karachi. You can also find us on the Contact page.'
+  },
+  {
+    keywords: ['menu', 'dish', 'item', 'price'],
+    answer: 'We have tasty rolls, fries, barbecues, dips and beverages. Check the Menu page to see all items and pricing.'
+  },
+  {
+    keywords: ['payment', 'pay', 'cash', 'online'],
+    answer: 'You can pay at checkout. We accept cash and other local payment methods. For special requests, contact us directly.'
+  },
+  {
+    keywords: ['special', 'recommend', 'best'],
+    answer: 'Our customer favorites are the Turkish Kabab Roll, Chicken Malai Boti Roll, and Crispy Hot Bites. Give them a try!'
+  }
+];
+
+const chatbotQuickReplies = [
+  'What are your opening hours?',
+  'Do you offer delivery?',
+  'How do I place an order?',
+  'Where are you located?'
+];
+
+function initChatbot() {
+  const chatbotWidget = document.getElementById('chatbot-widget');
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotClose = document.getElementById('chatbot-close');
+  const chatbotForm = document.getElementById('chatbot-form');
+  const chatbotInput = document.getElementById('chatbot-input');
+  const chatbotQuick = document.getElementById('chatbot-quick-replies');
+
+  if (!chatbotWidget || !chatbotToggle || !chatbotClose || !chatbotForm || !chatbotInput || !chatbotQuick) {
+    return;
+  }
+
+  chatbotToggle.addEventListener('click', () => {
+    chatbotWidget.classList.toggle('open');
+    chatbotWidget.style.display = chatbotWidget.classList.contains('open') ? 'flex' : 'none';
+    chatbotToggle.style.display = chatbotWidget.classList.contains('open') ? 'none' : 'flex';
+    if (chatbotWidget.classList.contains('open')) {
+      chatbotInput.focus();
+    }
+  });
+
+  chatbotClose.addEventListener('click', () => {
+    chatbotWidget.classList.remove('open');
+    chatbotWidget.style.display = 'none';
+    chatbotToggle.style.display = 'flex';
+  });
+
+  chatbotQuick.innerHTML = chatbotQuickReplies
+    .map(reply => `<button type="button" class="chatbot-quick-reply">${reply}</button>`)
+    .join('');
+
+  chatbotQuick.addEventListener('click', (event) => {
+    const button = event.target.closest('.chatbot-quick-reply');
+    if (!button) return;
+    handleChatMessage(button.textContent);
+  });
+
+  chatbotForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const message = chatbotInput.value.trim();
+    if (!message) return;
+    handleChatMessage(message);
+    chatbotInput.value = '';
+  });
+
+  chatbotInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      chatbotForm.dispatchEvent(new Event('submit', { cancelable: true }));
+    }
+  });
+
+  addChatbotMessage('Hi there! I’m Flames Help. Ask me about our menu, delivery, hours, or how to place an order.', 'bot');
+}
+
+function handleChatMessage(message) {
+  addChatbotMessage(message, 'user');
+  const response = getChatbotResponse(message);
+  setTimeout(() => {
+    addChatbotMessage(response, 'bot');
+  }, 500);
+}
+
+function addChatbotMessage(text, type) {
+  const messages = document.getElementById('chatbot-messages');
+  if (!messages) return;
+  const messageElement = document.createElement('div');
+  messageElement.className = `chatbot-message ${type}`;
+  const bubble = document.createElement('div');
+  bubble.className = 'chatbot-bubble';
+  bubble.textContent = text;
+  messageElement.appendChild(bubble);
+  messages.appendChild(messageElement);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function getChatbotResponse(message) {
+  const normalized = message.toLowerCase();
+  for (const rule of chatbotRules) {
+    if (rule.keywords.some(keyword => normalized.includes(keyword))) {
+      return rule.answer;
+    }
+  }
+  if (normalized.includes('hello') || normalized.includes('hi') || normalized.includes('hey')) {
+    return 'Hello! I’m here to help with questions about our menu, ordering, delivery, and location.';
+  }
+  if (normalized.includes('thanks') || normalized.includes('thank you')) {
+    return 'You’re welcome! If you have any other questions, feel free to ask.';
+  }
+  return 'I’m happy to help! Try asking about opening hours, delivery, menu items, or how to place an order.';
+}
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -150,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cart/FAB logic (should always run)
   updateFabCartCount();
   setupFabCartBtn();
+  initChatbot();
 });
 
 // Cart logic
